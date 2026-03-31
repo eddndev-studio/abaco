@@ -23,12 +23,21 @@ apps/
     └── src/
         ├── routes/           # Páginas
         └── lib/              # Utilidades compartidas
+deploy/
+├── abaco-api.service         # Systemd unit (API)
+├── abaco-web.service         # Systemd unit (Web)
+└── nginx.conf                # Reverse proxy
 ```
 
 ## Desarrollo
 
 ```bash
 make setup    # Instalar dependencias
-make db       # Levantar PostgreSQL
 make dev      # API + Web en paralelo
+```
+
+## Deploy
+
+```bash
+make deploy   # Compila y despliega a vps2
 ```

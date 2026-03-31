@@ -1,4 +1,4 @@
-.PHONY: dev dev-api dev-web build db
+.PHONY: dev dev-api dev-web build setup deploy
 
 # Development
 dev:
@@ -19,14 +19,13 @@ build-web:
 
 build: build-api build-web
 
-# Database
-db:
-	docker compose up -d db
-
-db-down:
-	docker compose down
-
 # Setup
 setup:
 	cd apps/web && npm install
 	cd apps/api && cargo check
+
+# Deploy to vps2
+deploy: build
+	scp apps/api/target/release/abaco-api vps2:/opt/abaco/abaco-api
+	rsync -a apps/web/build/ vps2:/opt/abaco/web/build/
+	ssh vps2 "sudo systemctl restart abaco-api abaco-web"

@@ -1,0 +1,16 @@
+[Unit]
+Description=Abaco API
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=abaco
+Group=abaco
+WorkingDirectory=/opt/abaco
+ExecStart=/opt/abaco/abaco-api
+EnvironmentFile=/opt/abaco/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

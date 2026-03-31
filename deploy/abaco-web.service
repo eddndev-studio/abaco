@@ -1,0 +1,17 @@
+[Unit]
+Description=Abaco Web (SvelteKit)
+After=network.target abaco-api.service
+
+[Service]
+Type=simple
+User=abaco
+Group=abaco
+WorkingDirectory=/opt/abaco/web
+ExecStart=/usr/local/bin/node build/index.js
+Environment=PORT=3001
+Environment=ORIGIN=https://abaco.eddn.dev
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
