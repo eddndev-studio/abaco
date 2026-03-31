@@ -1,0 +1,22 @@
+# Rust
+apps/api/target/
+
+# Node
+apps/web/node_modules/
+apps/web/.svelte-kit/
+apps/web/build/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PWA generated
+apps/web/dev-dist/
